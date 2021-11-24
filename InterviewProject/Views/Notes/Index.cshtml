@@ -1,0 +1,57 @@
+﻿@model IEnumerable<InterviewProject.Models.Note>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center"><i class="fa-solid fa-comment-text text-sm-right"></i>Texter</h1>
+
+<p>
+    <div class="container">
+        <div class="row">
+            <div class="col-1.5">
+            </div>
+            <div class="col-5">
+                <a onclick="showPopUp('@Url.Action("Create","Notes",null,Context.Request.Scheme)', 'Add Text')"
+                   class="btn btn-success text-white"><i class="fa-solid fa-random"></i> Translate Text</a>
+            </div>
+        </div>
+    </div>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TextTransalted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TextTransalted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

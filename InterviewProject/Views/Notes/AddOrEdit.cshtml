@@ -1,0 +1,38 @@
+﻿@model InterviewProject.Models.Note
+
+@{
+    ViewData["Title"] = "AddOrEdit";
+    Layout = null;
+}
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Text" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                    </div>
+                    <textarea asp-for="Text" class="form-control" id="textareaText" rows="5"></textarea>
+                </div>
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-success" />
+                </div>     
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
